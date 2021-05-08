@@ -1,0 +1,33 @@
+#server:
+#  servlet:
+#    context-path: /timeletter
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # url: jdbc:mysql://k4d105.p.ssafy.io/timeletter?serverTimeZone=UTC&CharacterEncoding=UTF-8
+    # username: caterpie
+    # password: password
+    url: jdbc:mysql://localhost:3306/timeletter?serverTimeZone=UTC&CharacterEncoding=UTF-8
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'timeletter-is-a-slow-messanger-platform-serviced-by-team-caterpie-since-2021-all-rights-reserved-at-caterpie' | base64
+  secret: dGltZWxldHRlci1pcy1hLXNsb3ctbWVzc2FuZ2VyLXBsYXRmb3JtLXNlcnZpY2VkLWJ5LXRlYW0tY2F0ZXJwaWUtc2luY2UtMjAyMS1hbGwtcmlnaHRzLXJlc2VydmVkLWF0LWNhdGVycGllCg==
+  token-validity-in-seconds: 86400
+        
+logging:
+  level:
+    com.caterpie: DEBUG
+#    org.hibernate.SQL: debug
+#    org.hibernate.type.descriptor.sql: trace
